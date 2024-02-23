@@ -11,8 +11,20 @@ public class FluxandMonoServices {
        return Flux.fromIterable(List.of("Orange","Mango","Banana")).log();
     }
 
+    public Flux<String> fruitsFluxMap(){
+        return Flux.fromIterable(List.of("Orange","Mango","Banana"))
+                .map(String::toUpperCase)
+                .log();
+    }
+
     public Mono<String> fruiteMono(){
         return Mono.just("Orange").log();
+    }
+
+    public Mono<String> fruiteMonoMap(){
+        return Mono.just("Orange")
+                .map(String::toUpperCase)
+                .log();
     }
 
     public static void main(String[] args){
