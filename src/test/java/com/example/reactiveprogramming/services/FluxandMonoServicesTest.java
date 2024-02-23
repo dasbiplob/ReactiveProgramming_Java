@@ -44,4 +44,49 @@ class FluxandMonoServicesTest {
                 .expectNext("ORANGE")
                 .verifyComplete();
     }
+
+    @Test
+    void fruitrsFluxFilter() {
+
+        var fruitFluxFilter = fluxandMonoServices.fruitrsFluxFilter(5);
+
+        StepVerifier.create(fruitFluxFilter)
+                .expectNext("Orange", "Banana")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitrsFluxFilterMap() {
+        var fruitrsFluxFilterMap = fluxandMonoServices.fruitrsFluxFilterMap(5);
+
+        StepVerifier.create(fruitrsFluxFilterMap)
+                .expectNext("ORANGE","BANANA")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitrsFluxFilterFlatMap() {
+        var fruitrsFluxFlatMap = fluxandMonoServices.fruitrsFluxFlatMap();
+
+        StepVerifier.create(fruitrsFluxFlatMap)
+                .expectNextCount(17)
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitrsFluxFlatMapAsync() {
+        var fruitrsFluxFlatMap = fluxandMonoServices.fruitrsFluxFlatMapAsync();
+        StepVerifier.create(fruitrsFluxFlatMap)
+                .expectNextCount(17)
+                .verifyComplete();
+
+    }
+
+    @Test
+    void fruiteMonoFlatMap() {
+        var fruitrsFluxFlatMap = fluxandMonoServices.fruiteMonoFlatMap();
+        StepVerifier.create(fruitrsFluxFlatMap)
+                .expectNextCount(1)
+                .verifyComplete();
+    }
 }
